@@ -13,6 +13,7 @@ const port = process.env.PORT || 3000;
 const upload = multer({ dest: 'server/uploads/' });
 
 app.use(cors());
+app.options('*', cors()); // включение CORS для всех запросов
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
@@ -94,6 +95,7 @@ app.post('/add-product', upload.single('photo'), (req, res) => {
     });
 });
 
+// Обработчик для получения продуктов
 app.get('/api/products', (req, res) => {
     const category = req.query.category;
     let sqlQuery = 'SELECT * FROM products';
@@ -154,7 +156,7 @@ app.post('/add-category', (req, res) => {
     });
 });
 
-// Получение списка категорий
+// Обработчик для получения категорий
 app.get('/get-categories', (req, res) => {
     db.query('SELECT * FROM catalog', (err, results) => {
         if (err) {
