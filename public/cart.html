@@ -46,7 +46,7 @@
                 return;
             }
 
-            fetch(`http://localhost:3000/api/cart?user_id=${user.user_id}`)
+            fetch(`http://nezhnaya-vanil.onrender.com/api/cart?user_id=${user.user_id}`)
                 .then(response => response.json())
                 .then(cartItems => {
                     const productList = document.querySelector('.product-list');
@@ -74,7 +74,7 @@
         }
 
         function updateQuantity(cartId, quantity) {
-            fetch(`http://localhost:3000/api/cart/${cartId}`, {
+            fetch(`http://nezhnaya-vanil.onrender.com/api/cart/${cartId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -89,7 +89,7 @@
         }
 
         function removeFromCart(cartId) {
-            fetch(`http://localhost:3000/api/cart/${cartId}`, {
+            fetch(`http://nezhnaya-vanil.onrender.com/api/cart/${cartId}`, {
                 method: 'DELETE'
             })
             .then(response => response.json())

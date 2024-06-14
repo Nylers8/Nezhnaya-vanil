@@ -58,7 +58,7 @@
                 return;
             }
 
-            fetch(`http://localhost:3000/api/cart?user_id=${user.user_id}`)
+            fetch(`http://nezhnaya-vanil.onrender.com/api/cart?user_id=${user.user_id}`)
                 .then(response => response.json())
                 .then(cartItems => {
                     const productList = document.querySelector('.product-list');
@@ -97,7 +97,7 @@
             const address = document.getElementById('address').value;
             const paymentMethod = document.getElementById('payment-method').value;
 
-            fetch('http://localhost:3000/api/orders', {
+            fetch('http://nezhnaya-vanil.onrender.com/api/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
