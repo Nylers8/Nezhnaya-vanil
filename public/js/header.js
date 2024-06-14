@@ -26,9 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
-    const baseUrl = 'https://ваш-домен.com'; // Укажите ваш хостинг-домен
-
-    fetch(`${baseUrl}/get-categories`)
+    fetch('https://nezhnaya-vanil.onrender.com/get-categories')
         .then(response => response.json())
         .then(data => {
             const catalogDropdown = document.getElementById('catalog-dropdown');
@@ -44,12 +42,12 @@ document.addEventListener('DOMContentLoaded', function () {
     searchInput.addEventListener('input', function () {
         const query = this.value;
         if (window.location.pathname.includes('catalog.html')) {
-            fetch(`${baseUrl}/api/products/search?query=${query}&category=${getCategoryFromURL()}`)
+            fetch(`https://nezhnaya-vanil.onrender.com/api/products/search?query=${query}&category=${getCategoryFromURL()}`)
                 .then(response => response.json())
                 .then(products => displayProducts(products))
                 .catch(error => console.error('Ошибка при поиске продуктов:', error));
         } else {
-            fetch(`${baseUrl}/api/products/search?query=${query}`)
+            fetch(`https://nezhnaya-vanil.onrender.com/api/products/search?query=${query}`)
                 .then(response => response.json())
                 .then(products => displayProducts(products))
                 .catch(error => console.error('Ошибка при поиске продуктов:', error));

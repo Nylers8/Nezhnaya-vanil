@@ -32,12 +32,12 @@
     </footer>
 
     <script>
-        document.getElementById('login-form').onsubmit = function(e) {
-            e.preventDefault();
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            fetch('http://nezhnaya-vanil.onrender.com/login', {
+            fetch('https://nezhnaya-vanil.onrender.com/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -49,16 +49,14 @@
                 if (data.redirectUrl) {
                     window.location.href = data.redirectUrl;
                 } else if (data.user) {
-                    localStorage.setItem('user', JSON.stringify(data.user));
+                    alert('Вход успешен');
                     window.location.href = 'index.html';
                 } else {
                     alert(data.message);
                 }
             })
-            .catch(error => {
-                console.error('Ошибка при входе:', error);
-            });
-        };
+            .catch(error => console.error('Ошибка при входе:', error));
+        });
     </script>
 </body>
 </html>
