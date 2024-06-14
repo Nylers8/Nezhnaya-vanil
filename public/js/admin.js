@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function sendCategory() {
     const name = document.getElementById('category-name').value;
-    fetch('http://localhost:3000/add-category', {
+    fetch('http://https://nezhnaya-vanil.onrender.com//add-category', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ function sendCategory() {
 function sendProduct() {
     const formData = new FormData(document.getElementById('add-product-form'));
     formData.append('categories', JSON.stringify(getSelectedCategories()));
-    fetch('http://localhost:3000/add-product', {
+    fetch('http://https://nezhnaya-vanil.onrender.com//add-product', {
         method: 'POST',
         body: formData
     })
@@ -74,7 +74,7 @@ function sendProduct() {
 }
 
 function fetchCategories() {
-    fetch('http://localhost:3000/get-categories')
+    fetch('http://https://nezhnaya-vanil.onrender.com//get-categories')
     .then(response => response.json())
     .then(data => {
         showCategories(data.categories);
@@ -117,7 +117,7 @@ function getSelectedCategories() {
 }
 
 function loadProducts() {
-    fetch('http://localhost:3000/api/products')
+    fetch('http://https://nezhnaya-vanil.onrender.com//api/products')
     .then(response => response.json())
     .then(products => {
         displayProducts(products);
@@ -144,7 +144,7 @@ function displayProducts(products) {
 }
 
 function updateProduct(id, field, value) {
-    fetch(`http://localhost:3000/api/products/${id}`, {
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/products/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -159,7 +159,7 @@ function updateProduct(id, field, value) {
 }
 
 function deleteProduct(id) {
-    fetch(`http://localhost:3000/api/products/${id}`, {
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/products/${id}`, {
         method: 'DELETE'
     })
     .then(response => response.json())
@@ -171,7 +171,7 @@ function deleteProduct(id) {
 }
 
 function loadUsers() {
-    fetch('http://localhost:3000/api/users')
+    fetch('http://https://nezhnaya-vanil.onrender.com//api/users')
     .then(response => response.json())
     .then(users => {
         displayUsers(users);
@@ -200,7 +200,7 @@ function displayUsers(users) {
 }
 
 function updateUser(id, field, value) {
-    fetch(`http://localhost:3000/api/users/${id}`, {
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/users/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -215,7 +215,7 @@ function updateUser(id, field, value) {
 }
 
 function deleteUser(id) {
-    fetch(`http://localhost:3000/api/users/${id}`, {
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/users/${id}`, {
         method: 'DELETE'
     })
     .then(response => response.json())
@@ -227,7 +227,7 @@ function deleteUser(id) {
 }
 
 function loadCategories() {
-    fetch('http://localhost:3000/api/categories')
+    fetch('http://https://nezhnaya-vanil.onrender.com//api/categories')
     .then(response => response.json())
     .then(categories => {
         displayCategories(categories);
@@ -250,7 +250,7 @@ function displayCategories(categories) {
 }
 
 function updateCategory(id, field, value) {
-    fetch(`http://localhost:3000/api/categories/${id}`, {
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/categories/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -265,7 +265,7 @@ function updateCategory(id, field, value) {
 }
 
 function deleteCategory(id) {
-    fetch(`http://localhost:3000/api/categories/${id}`, {
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/categories/${id}`, {
         method: 'DELETE'
     })
     .then(response => response.json())
@@ -277,7 +277,7 @@ function deleteCategory(id) {
 }
 
 function searchProducts(query) {
-    fetch(`http://localhost:3000/api/products/search?query=${query}`)
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/products/search?query=${query}`)
     .then(response => response.json())
     .then(products => {
         displayProducts(products);
@@ -286,7 +286,7 @@ function searchProducts(query) {
 }
 
 function searchUsers(query) {
-    fetch(`http://localhost:3000/api/users/search?query=${query}`)
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/users/search?query=${query}`)
     .then(response => response.json())
     .then(users => {
         displayUsers(users);
@@ -295,7 +295,7 @@ function searchUsers(query) {
 }
 
 function searchCategories(query) {
-    fetch(`http://localhost:3000/api/categories/search?query=${query}`)
+    fetch(`http://https://nezhnaya-vanil.onrender.com//api/categories/search?query=${query}`)
     .then(response => response.json())
     .then(categories => {
         displayCategories(categories);
