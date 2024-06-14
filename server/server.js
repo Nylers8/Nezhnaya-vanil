@@ -32,8 +32,6 @@ db.connect((err) => {
     }
 });
 
-
-
 // Маршрут для входа в систему
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
@@ -44,18 +42,20 @@ app.post('/login', (req, res) => {
     const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
     db.query(query, [email, password], (err, results) => {
         if (err) {
+            console.error('Ошибка при проверке учетных данных:', err);
             return res.status(500).json({ message: 'Ошибка при проверке учетных данных', error: err });
         }
 
         if (results.length > 0) {
             const user = results[0];
-            req.session.user = user;
+            console.log('Найден пользователь:', user); // Добавлено для отладки
             if (user.is_admin) {
                 res.json({ redirectUrl: 'admin.html' });
             } else {
                 res.json({ message: 'Вход успешен', user });
             }
         } else {
+            console.log('Неверный email или пароль'); // Добавлено для отладки
             res.status(401).json({ message: 'Неверный email или пароль' });
         }
     });
