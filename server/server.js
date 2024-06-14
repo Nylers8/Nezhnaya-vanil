@@ -34,7 +34,6 @@ db.connect((err) => {
 
 
 
-
 // Маршрут для входа в систему
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
