@@ -13,7 +13,6 @@ const port = process.env.PORT || 3000;
 const upload = multer({ dest: 'server/uploads/' });
 
 app.use(cors());
-app.options('*', cors()); // включение CORS для всех запросов
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
@@ -32,6 +31,7 @@ db.connect((err) => {
         console.log('Подключено к базе данных MySQL');
     }
 });
+
 
 // Маршрут для входа в систему
 app.post('/login', (req, res) => {
@@ -150,24 +150,24 @@ app.post('/add-category', (req, res) => {
     db.query(query, [name], (err, result) => {
         if (err) {
             console.error('Ошибка SQL:', err.message);
-            return res.status(500).send({ message: 'Ошибка при добавлении категории', error: err });
+            return res.status(500).send({ message: 'Ошибка при добавлении категории', error: err.message });
         }
         res.send({ message: 'Категория успешно добавлена', catalogId: result.insertId });
     });
 });
 
-// Обработчик для получения категорий
+// Получение списка категорий
 app.get('/get-categories', (req, res) => {
-    db.query('SELECT * FROM catalog', (err, results) => {
+    const query = 'SELECT * FROM catalog';
+    db.query(query, (err, results) => {
         if (err) {
-            console.log('Ошибка при запросе к БД:', err);
-            return res.status(500).send({ message: 'Ошибка при получении категорий', error: err });
+            console.log('Ошибка при запросе к БД:', err.message);
+            return res.status(500).send({ message: 'Ошибка при получении категорий', error: err.message });
         }
         console.log('Категории отправлены:', results);
         res.json({ categories: results });
     });
 });
-
 
 // Получение списка продуктов
 app.get('/api/products', (req, res) => {

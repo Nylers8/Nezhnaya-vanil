@@ -232,7 +232,7 @@ function loadCategories() {
     .then(response => response.json())
     .then(data => {
         console.log('Полученные категории:', data); // Отладочный вывод
-        displayCategories(data);
+        displayCategories(data.categories);
     })
     .catch(error => console.error('Ошибка при загрузке категорий:', error));
 }
