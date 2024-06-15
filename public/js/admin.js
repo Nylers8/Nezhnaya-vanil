@@ -77,6 +77,7 @@ function fetchCategories() {
     fetch('https://nezhnaya-vanil.onrender.com/get-categories')
     .then(response => response.json())
     .then(data => {
+        console.log('Полученные категории:', data); // Отладочный вывод
         showCategories(data.categories);
     })
     .catch(error => {
@@ -229,8 +230,9 @@ function deleteUser(id) {
 function loadCategories() {
     fetch('https://nezhnaya-vanil.onrender.com/api/categories')
     .then(response => response.json())
-    .then(categories => {
-        displayCategories(categories);
+    .then(data => {
+        console.log('Полученные категории:', data); // Отладочный вывод
+        displayCategories(data);
     })
     .catch(error => console.error('Ошибка при загрузке категорий:', error));
 }
